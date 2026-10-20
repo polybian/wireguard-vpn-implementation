@@ -1,0 +1,6 @@
+# Never commit private keys or live configs
+keys/
+*.key
+*.conf
+!*.conf.example
+.labtest/

@@ -1,0 +1,12 @@
+# WireGuard client config — template (full tunnel).
+# scripts/add-client.sh generates a ready-to-import copy of this.
+[Interface]
+PrivateKey = __CLIENT_PRIVATE_KEY__
+Address = 10.8.0.2/32
+DNS = 10.8.0.1
+
+[Peer]
+PublicKey = __SERVER_PUBLIC_KEY__
+Endpoint = vpn.example.com:51820
+AllowedIPs = 0.0.0.0/0
+PersistentKeepalive = 25
