@@ -6,8 +6,8 @@
 - **Clients:** point-to-point `/32` addresses from the same /24 (`.2`, `.3`, …).
 - **Crypto:** Curve25519 keypairs; each peer authenticates by public key. No
   passwords, no certificates to rotate — key rotation = swap one line.
-- **DNS:** dnsmasq listens on `10.8.0.1:53`, authoritative for `lab.local`
-  (e.g. `fileserver.lab.local → 10.8.0.10`), forwards everything else upstream.
+- **DNS:** dnsmasq listens on `10.8.0.1:53`, authoritative for `corp.local`
+  (e.g. `fileserver.corp.local → 10.8.0.10`), forwards everything else upstream.
 - **Firewall (nftables):**
   - INPUT: allow UDP 51820 (WireGuard), allow loopback + established; drop rest.
   - FORWARD: allow `wg0 → wan` for internet egress; masquerade client source IPs.

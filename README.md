@@ -1,7 +1,7 @@
-# WireGuard VPN Lab — Remote-Access Network with Firewall + Internal DNS
+# WireGuard VPN Implementation — Remote-Access Network with Firewall + Internal DNS
 
 
-> **Note on sources:** This lab recreates a deployment I administered in a professional role. Company names, hostnames, IP addresses, keys, and tenant identifiers have been sanitized or replaced with placeholders for confidentiality.
+> **Note on sources:** This implementation recreates a deployment I administered in a professional role. Company names, hostnames, IP addresses, keys, and tenant identifiers have been sanitized or replaced with placeholders for confidentiality.
 
 A production-style remote-access VPN build, mirroring a real distributed-workforce deployment:
 a WireGuard hub serving roaming clients, hardened with host firewall rules and an
@@ -18,7 +18,7 @@ the full path: handshake → routing → DNS → internet egress.
                     │   10.8.0.1/24  UDP 51820    │
                     │  ┌─────────┐  ┌──────────┐  │
                     │  │nftables │  │ dnsmasq  │  │
-                    │  │firewall │  │lab.local │  │
+                    │  │firewall │  │corp.local│  │
                     │  └─────────┘  └──────────┘  │
                     └──────────────┬──────────────┘
                                    │ WireGuard
@@ -40,7 +40,7 @@ the full path: handshake → routing → DNS → internet egress.
 | `server/wg0.conf.example` | Server config template (placeholders, no real keys) |
 | `clients/client-template.conf.example` | Client config template |
 | `firewall/nftables.conf` | Host firewall: allow 51820/udp, forward + masquerade, drop rest |
-| `dns/dnsmasq.conf` | Internal DNS zone `lab.local` on the VPN interface |
+| `dns/dnsmasq.conf` | Internal DNS zone `corp.local` on the VPN interface |
 | `docs/architecture.md` | Design decisions and topology |
 | `docs/interview-answers.md` | "How did you build this?" — talking points for interviews |
 
@@ -73,4 +73,4 @@ sudo ./scripts/add-client.sh alice
   a real host (`deploy-server.sh` runs `nft -f` and will surface any error).
 - **To fully test the tunnel**, deploy on a real Linux host or cloud VM and run:
   `wg show` (handshake), `ping 10.8.0.1` from a client, and
-  `dig @10.8.0.1 fileserver.lab.local`.
+  `dig @10.8.0.1 fileserver.corp.local`.

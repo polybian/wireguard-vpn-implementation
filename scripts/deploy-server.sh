@@ -32,7 +32,7 @@ sed "s|__WAN_IF__|$WAN_IF|g" "$PROJ_DIR/firewall/nftables.conf" > /etc/nftables.
 nft -f /etc/nftables.conf
 
 # Internal DNS
-cp "$PROJ_DIR/dns/dnsmasq.conf" /etc/dnsmasq.d/wireguard-lab.conf
+cp "$PROJ_DIR/dns/dnsmasq.conf" /etc/dnsmasq.d/wireguard-vpn.conf
 systemctl restart dnsmasq
 
 # WireGuard up

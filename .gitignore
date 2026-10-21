@@ -3,4 +3,4 @@ keys/
 *.key
 *.conf
 !*.conf.example
-.labtest/
+.demo-test/
