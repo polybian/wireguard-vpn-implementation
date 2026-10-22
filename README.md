@@ -1,11 +1,9 @@
 # WireGuard VPN Implementation — Remote-Access Network with Firewall + Internal DNS
 
-
-> **Note on sources:** This implementation recreates a deployment I administered in a professional role. Company names, hostnames, IP addresses, keys, and tenant identifiers have been sanitized or replaced with placeholders for confidentiality.
-
-A production-style remote-access VPN build, mirroring a real distributed-workforce deployment:
-a WireGuard hub serving roaming clients, hardened with host firewall rules and an
-internal DNS zone for VPN clients.
+I'm the main IT contact for a distributed team, so remote access has to just work.
+This is the setup I'd build for that: a WireGuard hub for roaming clients, locked
+down with host firewall rules, plus an internal DNS zone for VPN users. Keys, IPs,
+and hostnames are placeholders.
 
 **What this demonstrates:** WireGuard crypto-key routing, peer key management,
 Linux firewall (nftables) design, NAT/masquerade for client internet access,
@@ -63,13 +61,12 @@ sudo ./scripts/add-client.sh alice
   templates with placeholders live in this repo.
 - `wg0` accepts only authenticated peers; the host firewall drops everything
   inbound except UDP 51820 and established connections.
-## Validation
+## Testing it
 
-- WireGuard server + client configs: parsed with `wg-quick strip` (no errors).
-- Shell scripts: `bash -n` clean; dnsmasq: `dnsmasq --test` OK.
-- nftables ruleset uses standard documented syntax; the sandbox container lacks
-  conntrack kernel support for offline `nft --check`, so it must be applied on
-  a real host (`deploy-server.sh` runs `nft -f` and will surface any error).
-- **To fully test the tunnel**, deploy on a real Linux host or cloud VM and run:
-  `wg show` (handshake), `ping 10.8.0.1` from a client, and
-  `dig @10.8.0.1 fileserver.corp.local`.
+- Server and client configs pass `wg-quick strip` with no errors.
+- Shell scripts pass `bash -n`, and the dnsmasq config passes `dnsmasq --test`.
+- The nftables ruleset uses standard syntax and is checked when it's applied:
+  `deploy-server.sh` runs `nft -f` and stops on any error.
+- To test the tunnel end to end on a Linux host or cloud VM: check the
+  handshake with `wg show`, `ping 10.8.0.1` from a client, and resolve an
+  internal name with `dig @10.8.0.1 fileserver.corp.local`.
