@@ -42,7 +42,6 @@ the full path: handshake → routing → DNS → internet egress.
 | `firewall/nftables.conf` | Host firewall: allow 51820/udp, forward + masquerade, drop rest |
 | `dns/dnsmasq.conf` | Internal DNS zone `corp.local` on the VPN interface |
 | `docs/architecture.md` | Design decisions and topology |
-| `docs/interview-answers.md` | "How did you build this?" — talking points for interviews |
 
 ## Quick start
 
