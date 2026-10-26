@@ -1,4 +1,4 @@
-# WireGuard server config — template.
+# WireGuard server config - template.
 # Placeholders are replaced by scripts/deploy-server.sh from keys/.
 [Interface]
 PrivateKey = __SERVER_PRIVATE_KEY__
@@ -7,11 +7,11 @@ ListenPort = 51820
 SaveConfig = false
 
 [Peer]
-# client1 — laptop
+# client1 - laptop
 PublicKey = __CLIENT1_PUBLIC_KEY__
 AllowedIPs = 10.8.0.2/32
 
 [Peer]
-# client2 — phone
+# client2 - phone
 PublicKey = __CLIENT2_PUBLIC_KEY__
 AllowedIPs = 10.8.0.3/32

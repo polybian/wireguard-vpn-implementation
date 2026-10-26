@@ -1,4 +1,4 @@
-# WireGuard client config — template (full tunnel).
+# WireGuard client config - template (full tunnel).
 # scripts/add-client.sh generates a ready-to-import copy of this.
 [Interface]
 PrivateKey = __CLIENT_PRIVATE_KEY__

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# generate-keys.sh — create WireGuard keypairs for the server and first clients.
+# generate-keys.sh - create WireGuard keypairs for the server and first clients.
 # Idempotent: refuses to overwrite existing keys. Keys land in keys/ (gitignored).
 set -euo pipefail
 

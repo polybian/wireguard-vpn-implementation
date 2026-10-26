@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# deploy-server.sh — bring up the WireGuard server with firewall + internal DNS.
+# deploy-server.sh - bring up the WireGuard server with firewall + internal DNS.
 # Run as root on a Linux host. Assumes keys already generated (generate-keys.sh).
 set -euo pipefail
 
@@ -11,7 +11,7 @@ WG_PORT="51820"
 WAN_IF="$(ip route show default | awk '{print $5; exit}')"
 
 [[ $EUID -eq 0 ]] || { echo "run as root"; exit 1; }
-[[ -f "$KEY_DIR/server.key" ]] || { echo "missing server key — run generate-keys.sh first"; exit 1; }
+[[ -f "$KEY_DIR/server.key" ]] || { echo "missing server key - run generate-keys.sh first"; exit 1; }
 
 # Enable IPv4 forwarding (persist across reboots)
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-wireguard.conf

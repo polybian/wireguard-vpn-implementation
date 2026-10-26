@@ -1,4 +1,4 @@
-# WireGuard VPN Implementation — Remote-Access Network with Firewall + Internal DNS
+# WireGuard VPN Implementation: Remote-Access Network with Firewall + Internal DNS
 
 I'm the main IT contact for a distributed team, so remote access has to just work.
 This is the setup I'd build for that: a WireGuard hub for roaming clients, locked
@@ -52,7 +52,7 @@ sudo ./scripts/deploy-server.sh
 
 # 3. Add a client
 sudo ./scripts/add-client.sh alice
-# -> writes clients/alice.conf — import it on the device
+# -> writes clients/alice.conf - import it on the device
 ```
 
 ## Security notes

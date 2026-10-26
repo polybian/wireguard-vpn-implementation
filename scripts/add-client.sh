@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# add-client.sh — add a new client peer.
+# add-client.sh - add a new client peer.
 # Usage: sudo ./add-client.sh <name>
 # Generates the client's keypair and a ready-to-import config, then appends the
 # peer to the running server (no server restart needed).
@@ -44,5 +44,5 @@ PublicKey = $CLIENT_PUB
 AllowedIPs = $CLIENT_IP/32
 EOF
 
-echo "Client '$NAME' ready: $CLIENT_IP — import clients/$NAME.conf on the device."
+echo "Client '$NAME' ready: $CLIENT_IP - import clients/$NAME.conf on the device."
 echo "Set SERVER_ENDPOINT env var to the server's public IP/DNS before adding real clients."
